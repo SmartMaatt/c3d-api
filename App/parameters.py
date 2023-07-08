@@ -1,5 +1,6 @@
 import ezc3d
 
+
 class ParametersC3D:
     def __init__(self, c3d: ezc3d.c3d, markers_count: int, virtual_markers_count: int):
         self.c3d = c3d
@@ -18,8 +19,8 @@ class ParametersC3D:
 
         self.point_info = PointInfoC3D(self.point, markers_count, virtual_markers_count)
 
-class PointInfoC3D:
 
+class PointInfoC3D:
     # >>> Constructor <<<
     def __init__(self, point_info, markers_count: int, virtual_markers_count: int):
         self.point_info = point_info
@@ -58,7 +59,6 @@ class PointInfoC3D:
         for index in range(self.virtual_markers_count):
             self.virtual_markers.append(self.labels[index + self.markers_count])
 
-
     # >>> Indices methods <<<
     def get_indices_by_labels(self, labels: list) -> list:
         indices = []
@@ -71,7 +71,7 @@ class PointInfoC3D:
         for index in range(self.markers_count):
             indices.append(index)
         return indices
-    
+
     def get_virtual_markers_indices(self) -> list:
         indices = []
         for index in range(self.virtual_markers_count):
@@ -83,12 +83,12 @@ class PointInfoC3D:
 
     def get_angles_indices(self) -> list:
         return self.get_indices_by_labels(self.angles)
-    
+
     def get_forces_indices(self) -> list:
         return self.get_indices_by_labels(self.forces)
-    
+
     def get_moments_indices(self) -> list:
         return self.get_indices_by_labels(self.moments)
-    
+
     def get_powers_indices(self) -> list:
         return self.get_indices_by_labels(self.powers)
