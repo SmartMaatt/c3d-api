@@ -60,7 +60,7 @@ class PointInfoC3D:
             self.virtual_markers.append(self.labels[index + self.markers_count])
 
     # >>> Indices methods <<<
-    def get_indices_by_labels(self, labels: list) -> list:
+    def _get_indices_by_labels(self, labels: list) -> list:
         indices = []
         for label in labels:
             indices.append(self.labels.index(label))
@@ -79,16 +79,16 @@ class PointInfoC3D:
         return indices
 
     def get_modeled_markers_indices(self) -> list:
-        return self.get_indices_by_labels(self.modeled_markers)
+        return self._get_indices_by_labels(self.modeled_markers)
 
     def get_angles_indices(self) -> list:
-        return self.get_indices_by_labels(self.angles)
+        return self._get_indices_by_labels(self.angles)
 
     def get_forces_indices(self) -> list:
-        return self.get_indices_by_labels(self.forces)
+        return self._get_indices_by_labels(self.forces)
 
     def get_moments_indices(self) -> list:
-        return self.get_indices_by_labels(self.moments)
+        return self._get_indices_by_labels(self.moments)
 
     def get_powers_indices(self) -> list:
-        return self.get_indices_by_labels(self.powers)
+        return self._get_indices_by_labels(self.powers)

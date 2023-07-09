@@ -8,18 +8,18 @@ class FileManager:
         self.directory = os.path.dirname(file_path)
         self.file_full = os.path.basename(file_path)
         self.file_name, self.file_ext = os.path.splitext(self.file_full)
-        self.validate_file_path()
+        self._validate_file_path()
 
-    def validate_file_path(self):
+    def _validate_file_path(self):
         if self.file_ext != ".c3d":
             raise OSError(
                 f"Required file must have the extension .c3d not {self.file_ext}"
             )
 
-    def write_csv(self, data, frame_index: int):
-        with open(f"{self.directory}/{self.file_name}.csv", "w", newline="") as f:
+    def write_csv(self, data, frame_index: int, data_name: str):
+        with open(f"{self.directory}/{self.file_name}_{data_name}.csv", "w", newline="") as f:
             writer = csv.writer(f)
-            
+
             # Data
             for frame in data:
                 angles = []
@@ -31,13 +31,14 @@ class FileManager:
                     angles.append(angle[2])
                 writer.writerow(angles)
                 frame_index += 1
+        print(f"Succesfully saved data to {self.directory}/{self.file_name}_{data_name}.csv")
 
-    def write_csv_with_header(self, data, labels: list, frame_index: int):
-        with open(f"{self.directory}/{self.file_name}.csv", "w", newline="") as f:
+    def write_csv_with_header(self, data, labels: list, frame_index: int, data_name: str):
+        with open(f"{self.directory}/{self.file_name}_{data_name}.csv", "w", newline="") as f:
             writer = csv.writer(f)
 
             # Header
-            header = ["Index"]
+            header = ["Frame index"]
             for label in labels:
                 header.append(f"{label} [X]")
                 header.append(f"{label} [Y]")
@@ -55,3 +56,4 @@ class FileManager:
                     angles.append(angle[2])
                 writer.writerow(angles)
                 frame_index += 1
+        print(f"Succesfully saved data to {self.directory}/{self.file_name}_{data_name}.csv")
