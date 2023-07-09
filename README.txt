@@ -1,5 +1,5 @@
 1. Create a conda environment using the command
-conda env create -f environment.yml
+conda env create -f environment.yaml
 
 2. Open the "app" folder in VSCode
 
