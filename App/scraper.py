@@ -7,8 +7,6 @@ from parameters import ParametersC3D
 from data import DataC3D
 
 MARKERS_COUNT = 39
-VIRTUAL_MARKERS_COUNT = 76
-
 
 class Scraper:
     def __init__(self, file_path):
@@ -22,7 +20,7 @@ class Scraper:
             raise err
 
         self.header = HeaderC3D(self.c3d)
-        self.parameters = ParametersC3D(self.c3d, MARKERS_COUNT, VIRTUAL_MARKERS_COUNT)
+        self.parameters = ParametersC3D(self.c3d, MARKERS_COUNT, self.header.points_size)
         self.point_info = self.parameters.point_info
         self.data = DataC3D(self.c3d)
         self.point_data = self.data.point_data

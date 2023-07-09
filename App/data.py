@@ -5,10 +5,10 @@ class DataC3D:
     def __init__(self, c3d: ezc3d.c3d):
         self.c3d = c3d
 
-        self.data = self.c3d["data"]
-        self.points = self.data["points"]
-        self.meta_points = self.data["meta_points"]
-        self.analogs = self.data["analogs"]
+        self.data = self.c3d.get("data")
+        self.points = self.data.get("points") if self.data else None
+        self.meta_points = self.data.get("meta_points") if self.data else None
+        self.analogs = self.data.get("analogs") if self.data else None
 
         self.point_data = PointDataC3D(self.points)
 
