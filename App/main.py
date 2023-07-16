@@ -4,7 +4,7 @@ from data_type import DataType
 from scraper import Scraper
 
 def main():
-    dir_path = r"C:\Users\mateu\Desktop\Obrobione"
+    dir_path = r"C:\Users\Szkolenie\Desktop\Obrobione"
     c3d_data = glob.glob(dir_path + "\*.c3d")
     
     for c3d_path in c3d_data:
