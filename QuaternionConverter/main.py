@@ -7,7 +7,7 @@ from file_manager import FileManager
 # This software can read only csv data with headers!
 DIR_PATH = r"C:\Users\Szkolenie\Desktop\Obrobione"
 INCLUDE_HEADER = True
-EULER_TO_QUATERNION = False
+EULER_TO_QUATERNION = True
 
 
 def quaternion_to_euler(file_path:str, include_header:bool):

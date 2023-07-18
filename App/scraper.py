@@ -26,7 +26,7 @@ class Scraper:
         self.point_data = self.data.point_data
 
 
-    def report_data_to_csv(self, data_type: DataType):
+    def report_data_to_csv(self, data_type: DataType, include_header: bool):
         labels = []
         indices = []
         data_name = ""
@@ -73,10 +73,10 @@ class Scraper:
             indices = self.point_info.get_powers_indices()
             data_name = "powers"
 
-        self._get_data(labels, indices, data_name)
+        self._get_data(labels, indices, data_name, include_header)
 
 
-    def _get_data(self, labels: list, indices: list, data_name: str):
+    def _get_data(self, labels: list, indices: list, data_name: str, include_header: bool):
         # Frame count
         first_frame = self.header.points_first_frame
         frame_count = self.header.points_frame_count
@@ -85,4 +85,7 @@ class Scraper:
         data = self.point_data.get_data_by_indices(indices, frame_count)
 
         # Writing to csv
-        self.file_manager.write_csv_with_header(data, labels, first_frame, data_name)
+        if include_header:
+            self.file_manager.write_csv_with_header(data, labels, first_frame, data_name)
+        else:
+            self.file_manager.write_csv(data, first_frame, data_name)
