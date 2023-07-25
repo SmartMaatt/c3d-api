@@ -19,28 +19,28 @@ def main():
 
     csv_paths = glob.glob(DIR_PATH + "\*.csv")
     output_data = []
+    output_labels = []
 
     try:
         for csv_path in csv_paths:
             print(f"Reading {csv_path}")
-            output_data.append(generate_training_data(csv_path, TRAINING_LABELS, DATA_WINDOW, IS_QUATERNION))
-        
-        print("Splitting data set for training and validation")
-        training_data_unsorted, validation_data_unsorted = generate_validation_data(output_data, TRAINING_DATA_PROCENTAGE)
+            data, labels = generate_training_data(csv_path, TRAINING_LABELS, DATA_WINDOW, IS_QUATERNION)
+            output_data.append(data)
+            output_labels.append(labels)
         
         print("Sorting training set")
         training_data = []
-        for training_file in training_data_unsorted:
+        for training_file in output_data:
             training_data.extend(training_file)
 
-        print("Sorting validation set")
-        validation_data = []
-        for validation_file in validation_data_unsorted:
-            validation_data.extend(validation_file)
+        print("Sorting labels data")
+        labels_data = []
+        for label_file in output_labels:
+            labels_data.extend(label_file)
 
         print("Saving sets to csv")
         FileManager.write_csv(training_data, f"{DIR_PATH}/training_data.csv")
-        FileManager.write_csv(validation_data, f"{DIR_PATH}/validation.data.csv")
+        FileManager.write_csv(labels_data, f"{DIR_PATH}/labels_data.csv")
     except OutOfRangeError as err:
         print(f"ERROR: {err}")
     except ValueError as err:

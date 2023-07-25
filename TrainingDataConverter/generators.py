@@ -53,27 +53,35 @@ def generate_training_data(file_path, training_labels, data_window, is_quaternio
 
     # Slice training data
     sliced_data = []
+    sliced_labels = []
     for i in range(number_of_params):
         start_index = 0
         end_index = data_window - 1
 
-        while end_index != frames_count:
+        while end_index + 1 != frames_count:
             for j in range(data_step):
-                row = []
+                row_data = []
+                row_labels = []
                 header = training_data[j][i][0]
                 sample = training_data[j][i][1:]
 
-                row.append(f"{header} ({start_index},{end_index})")
-                row.extend(sample[start_index : end_index + 1])
-                sliced_data.append(row)
+                row_data.append(f"{header} ({start_index},{end_index})")
+                row_labels.append(f"{header} ({start_index},{end_index})")
+
+                row_data.extend(sample[start_index : end_index + 1])
+                row_labels.append(sample[end_index + 1])
+
+                sliced_data.append(row_data)
+                sliced_labels.append(row_labels)
             start_index += 1
             end_index += 1
     
     # Add file name to header
-    for slice in sliced_data:
-        slice[0] = f"{file_manager.file_name} - {slice[0]}"
+    for i in range(len(sliced_data)):
+        sliced_data[i][0] = f"{file_manager.file_name} - {sliced_data[i][0]}"
+        sliced_labels[i][0] = f"{file_manager.file_name} - {sliced_labels[i][0]}"
 
-    return sliced_data
+    return sliced_data, sliced_labels
 
 
 def generate_validation_data(training_data, training_procentage):
