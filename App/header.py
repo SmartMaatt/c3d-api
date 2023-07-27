@@ -16,8 +16,5 @@ class HeaderC3D:
             self.points.get("first_frame") if self.points else None
         )
         self.points_last_frame = self.points.get("last_frame") if self.points else None
-        self.points_frame_count = (
-            self.points_last_frame - self.points_first_frame + 1
-            if self.points_first_frame and self.points_last_frame
-            else None
-        )
+        self.points_frame_count = self.points_last_frame - self.points_first_frame + 1
+

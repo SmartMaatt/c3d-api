@@ -4,10 +4,12 @@ from data_type import DataType
 from scraper import Scraper
 
 
-DIR_PATH = r"C:\Users\Szkolenie\Desktop\Obrobione"
-DATA_TYPE = DataType.ANGLES
-INCLUDE_HEADER = True
+#DIR_PATH = r"C:\Users\krzyc\Desktop\ReidentyfikacjaChodu\Obrobione"
+#DIR_PATH = r"C:\Users\krzyc\Desktop\ReidentyfikacjaChodu\Klasyfikacyjne"
+DIR_PATH = r"C:\Users\krzyc\Desktop\ReidentyfikacjaChodu\Nieobrobione"
 
+DATA_TYPE = DataType.MARKERS
+INCLUDE_HEADER = False
 
 def main():
     c3d_data = glob.glob(DIR_PATH + "\*.c3d")

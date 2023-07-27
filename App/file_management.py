@@ -17,13 +17,14 @@ class FileManager:
             )
 
     def write_csv(self, data, frame_index: int, data_name: str):
-        with open(f"{self.directory}/{self.file_name}_{data_name}_no_header.csv", "w", newline="") as f:
+        #with open(f"{self.directory}/{self.file_name}_{data_name}_no_header.csv", "w", newline="") as f:
+        with open(f"{self.directory}/{self.file_name}.csv", "w", newline="") as f:
             writer = csv.writer(f)
 
             # Data
             for frame in data:
                 angles = []
-                angles.append(frame_index)
+                #angles.append(frame_index)
 
                 for angle in frame:
                     angles.append(angle[0])
@@ -31,7 +32,7 @@ class FileManager:
                     angles.append(angle[2])
                 writer.writerow(angles)
                 frame_index += 1
-        print(f"Succesfully saved data to {self.directory}/{self.file_name}_{data_name}_no_header.csv")
+        print(f"Succesfully saved data to {self.directory}/{self.file_name}.csv")
 
     def write_csv_with_header(self, data, labels: list, frame_index: int, data_name: str):
         with open(f"{self.directory}/{self.file_name}_{data_name}.csv", "w", newline="") as f:
@@ -48,7 +49,7 @@ class FileManager:
             # Data
             for frame in data:
                 angles = []
-                angles.append(frame_index)
+                #angles.append(frame_index)
 
                 for angle in frame:
                     angles.append(angle[0])
