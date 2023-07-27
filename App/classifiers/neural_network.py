@@ -5,8 +5,6 @@ from sklearn.metrics import accuracy_score
 from tensorflow import keras
 from keras.models import Sequential
 from keras.layers import Dense
-# from tensorflow.keras.models import Sequential
-# from tensorflow.keras.layers import Dense
 
 TRAIN_DIR = r"C:\Repos\Mgr\data\hundred_frames\csv_complete\csv_train.csv"
 TEST_DIR = r"C:\Repos\Mgr\data\hundred_frames\csv_complete\csv_test.csv"

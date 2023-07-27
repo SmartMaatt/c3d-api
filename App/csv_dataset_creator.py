@@ -2,8 +2,8 @@ import glob
 import csv
 import pandas as pd
 
-DIR_PATH = r"C:\Repos\Mgr\data\hundred_frames\csv_test"
-SAVE_PATH = r"C:\Repos\Mgr\data\hundred_frames\csv_test.csv"
+DIR_PATH = r"C:\Repos\Mgr\data\hundred_frames\csv_train"
+SAVE_PATH = r"C:\Repos\Mgr\data\hundred_frames\csv_train.csv"
 
 csv_data = glob.glob(DIR_PATH + "\*.csv")
 
