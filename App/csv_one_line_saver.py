@@ -1,12 +1,11 @@
 import csv
 import re
 import glob
-import pandas as pd
 from pathlib import Path
 
-DIR_PATH = r"C:\Repos\Mgr\data\hundred_frames\csv\415"
 #FILE_PATH = r"C:\Repos\Mgr\data\hundred_frames\csv\407a.csv"
-SAVE_PATH = r"C:\Repos\Mgr\data\hundred_frames\csv_one_line\415"
+DIR_PATH = r"C:\Repos\Mgr\data\hundred_frames\csv\456"
+SAVE_PATH = r"C:\Repos\Mgr\data\hundred_frames\csv_one_line\456"
 
 csv_data = glob.glob(DIR_PATH + "\*.csv")
     
