@@ -5,7 +5,7 @@ from file_manager import FileManager
 
 
 # This software can read only csv data with headers!
-DIR_PATH = r"C:\Users\Szkolenie\Desktop\Obrobione"
+DIR_PATH = r"C:\Users\mateu\Desktop\ReidentyfikacjaChodu"
 INCLUDE_HEADER = True
 EULER_TO_QUATERNION = True
 

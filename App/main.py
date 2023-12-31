@@ -4,8 +4,8 @@ from data_type import DataType
 from scraper import Scraper
 
 
-DIR_PATH = r"C:\Users\Szkolenie\Desktop\Obrobione"
-DATA_TYPE = DataType.ANGLES
+DIR_PATH = r"C:\Users\mateu\Desktop\ReidentyfikacjaChodu"
+DATA_TYPE = DataType.MODELED_MARKERS
 INCLUDE_HEADER = True
 
 

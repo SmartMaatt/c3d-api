@@ -5,8 +5,8 @@ import glob
 
 
 # Public parameters
-DIR_PATH = r"C:\Users\Szkolenie\Desktop\Obrobione\quaternions"
-TRAINING_LABELS = ["LHipAngles"]
+DIR_PATH = r"C:\Users\mateu\Desktop\ReidentyfikacjaChodu\Quaternions"
+TRAINING_LABELS = ["RNeckAngles"]
 DATA_WINDOW = 100
 IS_QUATERNION = True
 TRAINING_DATA_PROCENTAGE = 0.8
@@ -21,31 +21,31 @@ def main():
     output_data = []
     output_labels = []
 
-    try:
-        for csv_path in csv_paths:
+    for csv_path in csv_paths:
+        try:
             print(f"Reading {csv_path}")
             data, labels = generate_training_data(csv_path, TRAINING_LABELS, DATA_WINDOW, IS_QUATERNION)
             output_data.append(data)
             output_labels.append(labels)
-        
-        print("Sorting training set")
-        training_data = []
-        for training_file in output_data:
-            training_data.extend(training_file)
+        except OutOfRangeError as err:
+            print(f"ERROR: {err}")
+        except ValueError as err:
+            print(f"ERROR: {err}")
+    
+    print("Sorting training set")
+    training_data = []
+    for training_file in output_data:
+        training_data.extend(training_file)
 
-        print("Sorting labels data")
-        labels_data = []
-        for label_file in output_labels:
-            labels_data.extend(label_file)
+    print("Sorting labels data")
+    labels_data = []
+    for label_file in output_labels:
+        labels_data.extend(label_file)
 
-        print("Saving sets to csv")
-        FileManager.write_csv(training_data, f"{DIR_PATH}/training_data.csv")
-        FileManager.write_csv(labels_data, f"{DIR_PATH}/labels_data.csv")
-    except OutOfRangeError as err:
-        print(f"ERROR: {err}")
-    except ValueError as err:
-        print(f"ERROR: {err}")
-
+    print("Saving sets to csv")
+    FileManager.write_csv(training_data, f"{DIR_PATH}/training_data.csv")
+    FileManager.write_csv(labels_data, f"{DIR_PATH}/labels_data.csv")
+   
 
 if __name__ == "__main__":
     main()
